@@ -39,11 +39,13 @@ const News = ({ onShowBlogs, blogs, onEditBlog, onDeleteBlog }) => {
     const [showBlogModal, setShowBlogModal] = useState(false)
 
     useEffect(() => {
+				const NEWS_API_KEY = import.meta.env.VITE_NEWS_API_KEY
+
         const fetchNews = async () => {
-            let url = `https://gnews.io/api/v4/top-headlines?category=${selectedCategory}&lang=en&apikey=91f3d21df2bbd97e46623598d00bab6a`
+            let url = `https://gnews.io/api/v4/top-headlines?category=${selectedCategory}&lang=en&apikey=${NEWS_API_KEY}`
 
             if(searchQuery) {
-                url = `https://gnews.io/api/v4/search?q=${searchQuery}&lang=en&apikey=91f3d21df2bbd97e46623598d00bab6a`
+                url = `https://gnews.io/api/v4/search?q=${searchQuery}&lang=en&apikey=${NEWS_API_KEY}`
             }
 
             const response = await axios.get(url)
