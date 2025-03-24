@@ -39,7 +39,7 @@ const News = ({ onShowBlogs, blogs, onEditBlog, onDeleteBlog }) => {
     const [showBlogModal, setShowBlogModal] = useState(false)
 
     useEffect(() => {
-		const NEWS_API_KEY = import.meta.env.VITE_NEWS_API_KEY
+				const NEWS_API_KEY = import.meta.env.VITE_NEWS_API_KEY
 
         const fetchNews = async () => {
             let url = `https://gnews.io/api/v4/top-headlines?category=${selectedCategory}&lang=en&apikey=${NEWS_API_KEY}`
