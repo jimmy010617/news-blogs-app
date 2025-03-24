@@ -5,11 +5,12 @@ import './Weather.css'
 const Weather = () => {
     const [data, setData] = useState({})
     const [location, setLocation] = useState('')
+		const WEATHER_API_KEY = import.meta.env.VITE_WEATHER_API_KEY
 
     useEffect(() => {
         const fetchDefaultLocation = async () => {
             const defaultLocation = 'Seoul'
-            const url = `https://api.openweathermap.org/data/2.5/weather?q=${defaultLocation}&units=Metric&APPID=9cfb644716b8943b345dcc24bd68c6c0`
+            const url = `https://api.openweathermap.org/data/2.5/weather?q=${defaultLocation}&units=Metric&APPID=${WEATHER_API_KEY}`
         
             const response = await axios.get(url)
             setData(response.data)
@@ -18,7 +19,7 @@ const Weather = () => {
     }, [])
 
     const search = async () => {
-        const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=Metric&APPID=9cfb644716b8943b345dcc24bd68c6c0`
+        const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=Metric&APPID=${WEATHER_API_KEY}`
         
         try {
             const response = await axios.get(url)
